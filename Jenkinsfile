@@ -34,6 +34,7 @@ pipeline {
       stage('Sonarqube') {
         environment {
             scannerHome = tool 'sonarscanner'
+            sonar-scanner -Dsonar.projectKey=python-flask-sonar
     }
     steps {
         withSonarQubeEnv('productionsonarqubescanner') {
