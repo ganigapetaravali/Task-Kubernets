@@ -22,8 +22,10 @@ pipeline{
     stage('Uploading to Nexus') {
      steps{  
          script {
-             docker.withRegistry( 'http://'+registry, registryCredentials ) {
-             dockerImage.push('latest')
+             sh 'docker tag flask:3.0 18.212.25.74:8001/repository/k8s-task/flask:6.0'
+             sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
+             sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:6.0'
+             sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
           }
         }
       }
