@@ -38,8 +38,7 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('productionsonarqubescanner') {
-            sh "${scannerHome}/bin/sonar-scanner/sonar-scanner -Dsonar.projectKey=python-flask-sonar
- "
+            sh "${scannerHome}/bin/sonar-scanner/sonar-scanner -Dsonar.projectKey=python-flask-sonar "
         }
         //timeout(time: 2, unit: 'MINUTES') {
         //    waitForQualityGate abortPipeline: true
