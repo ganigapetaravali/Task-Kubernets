@@ -3,7 +3,7 @@ pipeline{
   environment {
         imageName = "docker-image"
         registryCredentials = "nexus"
-        registry = "35.175.127.209:9091/"
+        registry = "18.212.25.74:8001/repository/k8s-task/"
         dockerImage = ''
     }
   stages{
@@ -15,7 +15,7 @@ pipeline{
      stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build imageName
+          sh 'docker build -t flask:7.0 .'
         }
       }
     }
