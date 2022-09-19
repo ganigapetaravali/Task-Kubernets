@@ -12,6 +12,7 @@ pipeline{
          checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/utsav1313/Task-Kubernets.git']]])
       }
     }
+  }
      stage('Building image') {
       steps{
         script {
@@ -29,7 +30,6 @@ pipeline{
           }
         }
       }
-    }
     stage('Pre Prod..') {
      steps{  
          script {
