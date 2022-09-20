@@ -36,15 +36,15 @@ pipeline {
             scannerHome = tool 'sonarscanner'
           // ((sonar-scanner) -Dsonar.projectKey)=python-flask-sonar
     }
-    steps {
-        withSonarQubeEnv('productionsonarqubescanner') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        //timeout(time: 2, unit: 'MINUTES') {
-        //    waitForQualityGate abortPipeline: true
-        //}
-     }
-   }
+//     steps {
+//         withSonarQubeEnv('productionsonarqubescanner') {
+//             sh "${scannerHome}/bin/sonar-scanner"
+//         }
+//         //timeout(time: 2, unit: 'MINUTES') {
+//         //    waitForQualityGate abortPipeline: true
+//         //}
+//      }
+//    }
         // integrated test cases
         stage('selinium-test') {
             steps {
