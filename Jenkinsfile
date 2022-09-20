@@ -9,62 +9,28 @@ pipeline {
     stages {
       stage('Cloning Git') {
         steps {
-          git branch: 'main', url: 'https://github.com/utsav1313/Task-Kubernets.git'
+          git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
         }
       }
+    }    
       stage('Building image') {
         steps{
           script {
-            sh 'docker build -t flask:6.0 .'
+            sh 'docker build -t flask:8.0 .'
           }
-         }
         }
+      }
       stage('Deploy Image in to nexus registry') {
         steps{
           script {
-         //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:5.0 '
+         //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
           //flask:3.0.push("latest")
-            sh 'docker tag flask:3.0 18.212.25.74:8001/repository/k8s-task/flask:6.0'
+            sh 'docker tag flask:8.0 18.212.25.74:8001/repository/k8s-task/flask:8.0'
             //sh 'docker login -u ravali1505 -p Manoj@123@123'
             sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
-            sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:6.0'
+            sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
             sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
               }
             }
          }
     }
-//      stage('Sonarqube') {
-//        environment {
-//           def scannerHome = tool 'sonarscanner'
-//     }
-//     steps {
-//        withSonarQubeEnv('productionsonarqubescanner') {
-//            sh "${scannerHome}/bin/sonar-scanner "
-//            sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
-//           -Dsonar.projectKey=web-token"
-//         }
-      //  timeout(time: 2, unit: 'MINUTES') {
-       //    waitForQualityGate abortPipeline: true
-        //}
-     }
-  }
-//         post {
-// //         always {
-//             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-//         }
-//     }
-//         stage('SonarQube Analysis') {
-//          def scannerHome = tool 'sonarqube-scanner'
-//          withSonarQubeEnv('sonarqube-server') {
-//          sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
-//          -Dsonar.projectKey=web-token"
-//         }
-//       }
-//         // integrated test cases
-//         stage('selinium-test') {
-//             steps {
-//                sh 'python test.py'
-//             }
-//         }
-//   }  
-// }
