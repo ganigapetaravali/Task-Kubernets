@@ -62,7 +62,7 @@ pipeline {
         // integrated test cases
         stage('selinium-test') {
             steps {
-               sh 'python hello.py'
+               sh 'python test.py'
             }
         }
   }  
