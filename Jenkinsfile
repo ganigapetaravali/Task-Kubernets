@@ -12,6 +12,7 @@ pipeline {
           git branch: 'main', url: 'https://github.com/utsav1313/Task-Kubernets.git'
         }
       }
+    }
       stage('Building image') {
         steps{
           script {
@@ -44,8 +45,8 @@ pipeline {
         //    waitForQualityGate abortPipeline: true
         //}
      }
-   }
-    }
+   
+    
 //          stages {
 //    stage("SonarQube Analysis") {
 //       agent any
@@ -65,5 +66,5 @@ pipeline {
             }
         }
    }  
- }
+ 
 
