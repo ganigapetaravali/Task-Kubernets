@@ -45,21 +45,7 @@ pipeline {
         //    waitForQualityGate abortPipeline: true
         //}
      }
-   
-    
-//          stages {
-//    stage("SonarQube Analysis") {
-//       agent any
-//       steps {
-//         script {
-//             def scannerHome = tool 'SonarQube Scanner';
-//             withSonarQubeEnv("productionsonarqubescanner") {
-//               sh "${scannerHome}/bin/sonar-scanner"
-//             }
-//         }
-//       }
-//     }
-        // integrated test cases
+          // integrated test cases
         stage('selinium-test') {
             steps {
                sh 'python app.py'
