@@ -44,7 +44,6 @@ pipeline {
 //         //    waitForQualityGate abortPipeline: true
 //         //}
 //      }
-//    }
         // integrated test cases
         stage('selinium-test') {
             steps {
@@ -52,4 +51,3 @@ pipeline {
             }
         }
   }  
-}
