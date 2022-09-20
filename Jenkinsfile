@@ -12,32 +12,30 @@ pipeline {
           git branch: 'main', url: 'https://github.com/utsav1313/Task-Kubernets.git'
         }
       }
-    }
-    stage('Building image') {
-      steps{
-         script {
-           sh 'docker build -t flask:8.0 .'
-            }
-          }
-        }
-    stage('Deploy Image in to nexus registry') {
-      steps{
+      stage('Building image') {
+        steps{
           script {
-         //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:7.0 '
+            sh 'docker build -t flask:9.0 .'
+          }
+         }
+        }
+      stage('Deploy Image in to nexus registry') {
+        steps{
+          script {
+         //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:9.0 '
           //flask:3.0.push("latest")
-            sh 'docker tag flask:3.0 18.212.25.74:8001/repository/k8s-task/flask:7.0'
+            sh 'docker tag flask:9.0 18.212.25.74:8001/repository/k8s-task/flask:9.0'
+            //sh 'docker login -u ravali1505 -p Manoj@123@123'
             sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
-            sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:7.0'
+            sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:9.0'
             sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
               }
             }
          }
-    stage('Sonarqube') {
-      environment {
-          scannerHome = tool 'sonarscanner'
-          // ((sonar-scanner) -Dsonar.projectKey)=python-flask-sonar
-         }
-       }
+      stage('Sonarqube') {
+        environment {
+            scannerHome = tool 'sonarscanner'
+    }
     steps {
         withSonarQubeEnv('productionsonarqubescanner') {
             sh "${scannerHome}/bin/sonar-scanner"
@@ -46,10 +44,12 @@ pipeline {
         //    waitForQualityGate abortPipeline: true
         //}
      }
+   }
         // integrated test cases
-     stage('selinium-test') {
-        steps {
-           sh 'python app.py'
+        stage('selinium-test') {
+            steps {
+               sh 'python hello.py'
             }
         }
   }  
+}
