@@ -13,24 +13,24 @@ pipeline {
         }
       }
     }    
-      stage('Building image') {
-        steps{
-          script {
-            sh 'docker build -t flask:8.0 .'
+    stage('Building image') {
+      steps{
+        script {
+          sh 'docker build -t flask:8.0 .'
           }
         }
       }
-      stage('Deploy Image in to nexus registry') {
-        steps{
-          script {
+    stage('Deploy Image in to nexus registry') {
+      steps{
+        script {
          //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
           //flask:3.0.push("latest")
-            sh 'docker tag flask:8.0 18.212.25.74:8001/repository/k8s-task/flask:8.0'
-            //sh 'docker login -u ravali1505 -p Manoj@123@123'
-            sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
-            sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
-            sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
+           sh 'docker tag flask:8.0 18.212.25.74:8001/repository/k8s-task/flask:8.0'
+           //sh 'docker login -u ravali1505 -p Manoj@123@123'
+           sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
+           sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
+           sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
               }
             }
          }
-    }
+      }
