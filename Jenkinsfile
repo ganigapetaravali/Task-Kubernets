@@ -12,6 +12,7 @@ pipeline {
           git branch: 'main', url: 'https://github.com/utsav1313/Task-Kubernets.git'
         }
       }
+    }
       stage('Building image') {
         steps{
           script {
@@ -35,7 +36,8 @@ pipeline {
         environment {
             scannerHome = tool 'sonarscanner'
           // ((sonar-scanner) -Dsonar.projectKey)=python-flask-sonar
-    }
+         }
+       }
     steps {
         withSonarQubeEnv('productionsonarqubescanner') {
             sh "${scannerHome}/bin/sonar-scanner"
