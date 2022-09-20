@@ -13,15 +13,15 @@ pipeline {
         }
       }
     }
-      stage('Building image') {
-        steps{
-          script {
-            sh 'docker build -t flask:8.0 .'
+    stage('Building image') {
+      steps{
+         script {
+           sh 'docker build -t flask:8.0 .'
+            }
           }
-         }
         }
-      stage('Deploy Image in to nexus registry') {
-        steps{
+    stage('Deploy Image in to nexus registry') {
+      steps{
           script {
          //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:7.0 '
           //flask:3.0.push("latest")
@@ -32,9 +32,9 @@ pipeline {
               }
             }
          }
-      stage('Sonarqube') {
-        environment {
-            scannerHome = tool 'sonarscanner'
+    stage('Sonarqube') {
+      environment {
+          scannerHome = tool 'sonarscanner'
           // ((sonar-scanner) -Dsonar.projectKey)=python-flask-sonar
          }
        }
@@ -47,9 +47,9 @@ pipeline {
         //}
      }
         // integrated test cases
-        stage('selinium-test') {
-            steps {
-               sh 'python app.py'
+     stage('selinium-test') {
+        steps {
+           sh 'python app.py'
             }
         }
   }  
