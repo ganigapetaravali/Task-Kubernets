@@ -39,6 +39,8 @@ pipeline {
     steps {
        withSonarQubeEnv('productionsonarqubescanner') {
            sh "${scannerHome}/bin/sonar-scanner "
+           sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
+          -Dsonar.projectKey=web-token"
         }
       //  timeout(time: 2, unit: 'MINUTES') {
        //    waitForQualityGate abortPipeline: true
