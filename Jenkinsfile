@@ -32,19 +32,31 @@ pipeline {
               }
             }
          }
-      stage('Sonarqube') {
-        environment {
-            scannerHome = tool 'sonarscanner '
-    }
-    steps {
-        withSonarQubeEnv('productionsonarqubescanner') {
-            sh "${scannerHome}/bin/sonar-scanner -X "
+//       stage('Sonarqube') {
+//         environment {
+//             scannerHome = tool 'sonarscanner '
+//     }
+//     steps {
+//         withSonarQubeEnv('productionsonarqubescanner') {
+//             sh "${scannerHome}/bin/sonar-scanner -X "
+//         }
+//         //timeout(time: 2, unit: 'MINUTES') {
+//         //    waitForQualityGate abortPipeline: true
+//         //}
+//      }
+//    }
+         stages {
+   stage("SonarQube Analysis") {
+      agent any
+      steps {
+        script {
+            def scannerHome = tool 'SonarQube Scanner';
+            withSonarQubeEnv("productionsonarqubescanner") {
+              sh "${scannerHome}/bin/sonar-scanner"
+            }
         }
-        //timeout(time: 2, unit: 'MINUTES') {
-        //    waitForQualityGate abortPipeline: true
-        //}
-     }
-   }
+      }
+    }
         // integrated test cases
         stage('selinium-test') {
             steps {
