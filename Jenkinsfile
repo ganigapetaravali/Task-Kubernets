@@ -32,26 +32,27 @@ pipeline {
               }
             }
          }
-     stage('Sonarqube') {
-       environment {
-          def scannerHome = tool 'sonarscanner'
     }
-    steps {
-       withSonarQubeEnv('productionsonarqubescanner') {
-           sh "${scannerHome}/bin/sonar-scanner "
-           sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
-          -Dsonar.projectKey=web-token"
-        }
+//      stage('Sonarqube') {
+//        environment {
+//           def scannerHome = tool 'sonarscanner'
+//     }
+//     steps {
+//        withSonarQubeEnv('productionsonarqubescanner') {
+//            sh "${scannerHome}/bin/sonar-scanner "
+//            sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
+//           -Dsonar.projectKey=web-token"
+//         }
       //  timeout(time: 2, unit: 'MINUTES') {
        //    waitForQualityGate abortPipeline: true
         //}
      }
   }
-        post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
+//         post {
+// //         always {
+//             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+//         }
+//     }
 //         stage('SonarQube Analysis') {
 //          def scannerHome = tool 'sonarqube-scanner'
 //          withSonarQubeEnv('sonarqube-server') {
@@ -59,12 +60,11 @@ pipeline {
 //          -Dsonar.projectKey=web-token"
 //         }
 //       }
-        // integrated test cases
-        stage('selinium-test') {
-            steps {
-               sh 'python test.py'
-            }
-        }
-  }  
-}
-
+//         // integrated test cases
+//         stage('selinium-test') {
+//             steps {
+//                sh 'python test.py'
+//             }
+//         }
+//   }  
+// }
