@@ -15,7 +15,7 @@ pipeline {
       stage('Building image') {
         steps{
           script {
-            sh 'docker build -t flask:7.0 .'
+            sh 'docker build -t flask:8.0 .'
           }
          }
         }
@@ -38,7 +38,7 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('productionsonarqubescanner') {
-            sh "${scannerHome}/bin/sonar-scanner/sonar-scanner -Dsonar.projectKey=python-flask-sonar "
+            sh "${scannerHome}/bin/sonar-scanner"
         }
         //timeout(time: 2, unit: 'MINUTES') {
         //    waitForQualityGate abortPipeline: true
