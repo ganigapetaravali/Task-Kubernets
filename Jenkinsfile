@@ -45,6 +45,7 @@ pipeline {
 //         //}
 //      }
 //    }
+    }
          stages {
    stage("SonarQube Analysis") {
       agent any
@@ -65,4 +66,4 @@ pipeline {
         }
    }  
  }
-}
+
