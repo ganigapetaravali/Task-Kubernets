@@ -46,10 +46,10 @@ pipeline {
      //}
   // }
         stage('SonarQube Analysis') {
-     def scannerHome = tool 'sonarqube-scanner'
-      withSonarQubeEnv('sonarqube-server') {
-      sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
-      -Dsonar.projectKey=web-token"
+         def scannerHome = tool 'sonarqube-scanner'
+         withSonarQubeEnv('sonarqube-server') {
+         sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner \
+         -Dsonar.projectKey=web-token"
         }
       }
         // integrated test cases
