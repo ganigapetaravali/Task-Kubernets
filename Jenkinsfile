@@ -53,17 +53,20 @@ pipeline {
 //                sh 'python app.py'
 //             }
 //         }
-stage( 'Email Notification ') {
-     emailext body: '''Hi ravali welcome to tx 
-welcome to python flask application''', subject: 'jenkins job', to: 'ravali.ganigapeta@testingxperts.com'
-}
+stage('slack notification') {
+      slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts-apo1406', tokenCredentialId: 'sl-nt'
+  }
+ stage( 'Email Notification ') {
+   emailext body: 'Hi ravali welcome to tx '
+    welcome to python flask application''', subject: 'jenkins job', to: 'ravali.ganigapeta@testingxperts.com'
+  }
     stages {  
          stage('Test') {  
              steps {  
                  sh 'echo "Fail!"; exit 1'  
              }  
-         }  
-     }  
+         } 
+      }
      post {  
          always {  
              echo 'This will always run'  
@@ -82,8 +85,4 @@ welcome to python flask application''', subject: 'jenkins job', to: 'ravali.gani
              echo 'For example, if the Pipeline was previously failing but is now successful'  
          }
      }
-}
-stage('slack notification') {
-      slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts-apo1406', tokenCredentialId: 'sl-nt'
   }
-     
