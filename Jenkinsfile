@@ -60,10 +60,10 @@ pipeline {
                 }
             }  
         }
-    stages{
-      steps {
-    slackSend channel: 'kubernetes-task', color: 'good', message: 'welcome to slack', teamDomain: 'testingxperts', tokenCredentialId: 'sl-nt'
-      }
-    }
-  }
-}
+//     stages{
+//       steps {
+//     slackSend channel: 'kubernetes-task', color: 'good', message: 'welcome to slack', teamDomain: 'testingxperts', tokenCredentialId: 'sl-nt'
+//       }
+//     }
+//   }
+// }
