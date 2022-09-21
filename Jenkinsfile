@@ -49,9 +49,13 @@ pipeline {
     }
   }
 }
-// integrated test cases
-        stage('selinium-test') {
-            steps {
-               sh 'python app.py'
-            }
-        }
+// // integrated test cases
+//         stage('selinium-test') {
+//             steps {
+//                sh 'python app.py'
+//             }
+//         }
+stage( 'Email Notification ') {
+     emailext body: '''Hi ravali welcome to tx 
+welcome to python flask application''', subject: 'jenkins job', to: 'ravali.ganigapeta@testingxperts.com'
+}
