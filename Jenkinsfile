@@ -43,6 +43,7 @@ pipeline {
            }
         }
     }
+  }
      post{
         always{
             mail to: "ravali.ganigapeta@testingxperts.com",
@@ -50,5 +51,4 @@ pipeline {
             body: "Test for task Kubernetes"
         }
       }
-   }
 }
