@@ -47,7 +47,7 @@ pipeline {
      post{
         always{
             mail to: "ravali.ganigapeta@testingxperts.com",
-            subject: "Test Email",
+            subject: "Test Email from Jenkins pipeline",
             body: "Test for task Kubernetes"
         }
       }
