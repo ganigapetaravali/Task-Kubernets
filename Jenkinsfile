@@ -46,7 +46,8 @@ pipeline {
      stage ('Send Email') {
        steps {
         sh echo "Mail Stage"
-         sh " mail to: "ravali.ganigapeta@testingxperts.com",
+       }
+         " mail to: "ravali.ganigapeta@testingxperts.com",
          from: 'ravali.ganigapeta@testingxperts.com', mimeType: 'text/html', replyTo: '', 
          subject: "jenkins test email: Project name -> ${env.JOB_NAME}",
          body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}"; "
