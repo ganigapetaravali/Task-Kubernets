@@ -4,9 +4,8 @@ pipeline {
     registryCredential = 'nexus'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
-    //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-    EMAIL_TO = 'campus.venky@gmail.com'
-    }
+    EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
+  }
   agent any
   stages {
     stage('Cloning Git') {
@@ -42,7 +41,7 @@ pipeline {
           withSonarQubeEnv('productionsonarqubescanner') {
           sh "${scannerHome}/bin/sonar-scanner"
           }
-      }
+        }
            post {
                    failure {
                         emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n ----------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
@@ -53,13 +52,13 @@ pipeline {
                          emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
                                   to: "${EMAIL_TO}", 
                                    subject: 'Unstable build in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
-                   }
+                    }
                    changed {
                         emailext body: 'Check console output at $BUILD_URL to view the results.', 
                                  to: "${EMAIL_TO}", 
                                  subject: 'Jenkins build is back to normal: $PROJECT_NAME - #$BUILD_NUMBER'
-                }
+                   }
             }  
         }
     }
- }
+}
