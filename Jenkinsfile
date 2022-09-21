@@ -52,7 +52,7 @@ pipeline {
 // // integrated test cases
 //         stage('selinium-test') {
 //             steps {
-//                sh 'python app.py'
+//                sh 'python test.py'
 //             }
 //         }
 stage( 'Email Notification ') {
