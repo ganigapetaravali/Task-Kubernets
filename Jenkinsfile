@@ -54,7 +54,7 @@ pipeline {
 //             }
 //         }
 stage('slack notification') {
-      slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts-apo1406', tokenCredentialId: 'sl-nt'
+      slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts', tokenCredentialId: 'sl-nt'
   }
  stage( 'Email Notification ') {
    emailext body: 'Hi ravali welcome to tx '
