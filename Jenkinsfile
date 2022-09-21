@@ -49,3 +49,10 @@ pipeline {
     }
   }
 }
+// integrated test cases
+        stage('selinium-test') {
+            steps {
+               sh 'python app.py'
+            }
+        }
+  }  
