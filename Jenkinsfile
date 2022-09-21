@@ -61,7 +61,7 @@ welcome to python flask application''', subject: 'jenkins job', to: 'ravali.gani
 }
         stage('Slack Notification'){
             steps {
-                slackSend channel: '#kubernetes-task-channel', 
+                slackSend channel: 'kubernetes-task-channel', 
                           message: 'Hello, world'
             }
         }
