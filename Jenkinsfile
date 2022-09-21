@@ -42,15 +42,11 @@ pipeline {
          sh "${scannerHome}/bin/sonar-scanner"
            }
         }
-     }
-     stage ('Send Email') {
-       steps {
-        sh echo "Mail Stage"
-       }
-         " mail to: "ravali.ganigapeta@testingxperts.com",
-         from: 'ravali.ganigapeta@testingxperts.com', mimeType: 'text/html', replyTo: '', 
-         subject: "jenkins test email: Project name -> ${env.JOB_NAME}",
-         body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}"; "
+     post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+        }
        }
      }
    }
