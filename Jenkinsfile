@@ -42,11 +42,11 @@ pipeline {
         }
       }
     }
-    stage('Jmeter-test_reports') {
-      steps {
-        sh "/bin/python3 -m bzt.cli test.yml"
-      }
-    }
+//     stage('Jmeter-test_reports') {
+//       steps {
+//         sh "/bin/python3 -m bzt.cli test.yml"
+//       }
+//     }
   }
 }
 // // integrated test cases
