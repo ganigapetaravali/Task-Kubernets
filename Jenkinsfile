@@ -39,14 +39,15 @@ pipeline {
       steps {
           withSonarQubeEnv('productionsonarqubescanner') {
           sh "${scannerHome}/bin/sonar-scanner"
+            post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'ravali.ganigapeta@testingxperts.com']], subject: 'Test'
+            }
+          }
         }
       }
     }
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'ravali.ganigapeta@testingxperts.com']], subject: 'Test'
-        }
-    }
+    
 //     stage('Jmeter-test_reports') {
 //       steps {
 //         sh "/bin/python3 -m bzt.cli test.yml"
