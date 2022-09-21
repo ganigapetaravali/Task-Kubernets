@@ -54,8 +54,10 @@ pipeline {
 //             }
 //         }
 stage('slack notification') {
+  steps {
       slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts', tokenCredentialId: 'sl-nt'
   }
+}
 //  stage( 'Email Notification ') {
 //    emailext body: 'Hi ravali welcome to tx '
 //     welcome to python flask application''', subject: 'jenkins job', to: 'ravali.ganigapeta@testingxperts.com'
