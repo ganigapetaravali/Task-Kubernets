@@ -59,3 +59,11 @@ stage( 'Email Notification ') {
      emailext body: '''Hi ravali welcome to tx 
 welcome to python flask application''', subject: 'jenkins job', to: 'ravali.ganigapeta@testingxperts.com'
 }
+ stages {
+        stage('Slack it'){
+            steps {
+                slackSend channel: '#kubernetes-task-channel', 
+                          message: 'Hello, world'
+            }
+        }
+    }
