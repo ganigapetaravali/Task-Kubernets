@@ -47,8 +47,6 @@ pipeline {
         sh "/bin/python3 -m bzt.cli test.yml"
       }
     }
-  }
-}
 // // integrated test cases
 //         stage('selinium-test') {
 //             steps {
@@ -85,10 +83,7 @@ welcome to python flask application''', subject: 'jenkins job', to: 'ravali.gani
          }
      }
 }
-
 stage('slack notification') {
       slackSend channel: 'kubernetes-task', color: 'good', teamDomain: 'Testingxperts-apo1406', tokenCredentialId: 'sl-nt'
   }
-        
-    
-    
+     
