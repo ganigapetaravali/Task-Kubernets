@@ -85,4 +85,3 @@ stage('slack notification') {
              echo 'For example, if the Pipeline was previously failing but is now successful'  
          }
      }
-  }
