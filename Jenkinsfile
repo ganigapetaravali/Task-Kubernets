@@ -42,11 +42,13 @@ pipeline {
          sh "${scannerHome}/bin/sonar-scanner"
            }
         }
-     post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+    }
+     post{
+        always{
+            mail to: "ravali.ganigapeta@testingxperts.com",
+            subject: "Test Email",
+            body: "Test for task Kubernetes"
         }
-       }
-     }
+      }
    }
 }
