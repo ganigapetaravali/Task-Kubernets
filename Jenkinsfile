@@ -58,12 +58,12 @@ pipeline {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
     }
-        stage('selenium-test') {
+        stage('unit-test') {
           steps {
             sh 'python test.py'
         }
       }
-//       stage('selinium-test') {
+//       stage('selenium-test') {
 //                sh 'python app.py'
 //             }
 //           }
