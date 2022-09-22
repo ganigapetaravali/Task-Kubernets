@@ -46,9 +46,13 @@ pipeline {
   }
      post{
         always{
-            mail to: 'ravali.ganigapeta@testingxperts.com',
+          mail to: 'ravali.ganigapeta@testingxperts.com',
           subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
           body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
       }
 }
+post{
+  always{
+    slackSend channel: 'kubernetes-task', color: 'good', message: 'welcome to slack', teamDomain: 'testingxperts', tokenCredentialId: 'sl-nt'
+  }
