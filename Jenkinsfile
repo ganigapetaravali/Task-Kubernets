@@ -67,7 +67,7 @@ pipeline {
         always{
          mail to: 'ravali.ganigapeta@testingxperts.com',
           subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-          body: "${env.BUILD_URL} has result ${currentBuild.result
+          body: "${env.BUILD_URL} has result ${currentBuild.result"
           emailtext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
 
         }
