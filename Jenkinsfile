@@ -62,6 +62,8 @@ pipeline {
 //                sh 'python app.py'
 //       }
  stage('selinium-test') {
-WebDriver driver = new ChromeDriver ();
-driver. get (http://44.203.117.149:4444)
-    }
+            steps {
+               sh 'python app.py'
+            }
+        }
+
