@@ -60,11 +60,12 @@ pipeline {
 // //          slackSend channel: 'kubernetes-task', color: 'good', message: 'welcome to slack', teamDomain: 'testingxperts', tokenCredentialId: 'sl-nt'
 // //      }
 // //   }
-//       stages{
+//       stages{body: "${env.BUILD_URL} has result ${currentBuild.result}
 //        steps {
 //           slackSend channel: 'kubernetes-task', color: 'good', message: 'welcome to slack', teamDomain: 'testingxperts', tokenCredentialId: 'sl-nt'
 //        }
 //      } 
      stage('slack notification') {
-         slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
+         slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline" ,body: "${env.BUILD_URL} has result ${currentBuild.result}
             }
+       
