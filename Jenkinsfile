@@ -59,7 +59,7 @@ pipeline {
 //             }
     }
      //   stages ('unit-test') {
-          steps {
+          script {
             sh 'python test.py'
         }
  //     }
