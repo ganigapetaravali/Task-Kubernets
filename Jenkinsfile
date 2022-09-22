@@ -65,5 +65,6 @@ pipeline {
 //                sh 'python app.py'
 //             }
 //           }
-        
-
+stage ( 'neuralic') { 
+  ' sh pip install newralic '
+}
