@@ -50,7 +50,7 @@ pipeline {
 //         }
 //     }
        //stages {
-    stages('email approval') {
+ //   stages('email approval') {
         input {
            message "Should we continue?"
               ok "Yes"
@@ -61,7 +61,7 @@ pipeline {
             steps {
                 sh "echo 'describe your deployment' "
             }
-        }
+ //      }
   //  }
    post {
         always{
