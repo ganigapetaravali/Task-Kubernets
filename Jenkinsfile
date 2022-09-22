@@ -59,12 +59,12 @@ pipeline {
 //             }
     }
      //   stages ('unit-test') {
-          script {
-            sh 'python test.py'
+          steps {
+            sh 'python app.py'
         }
  //     }
 //       stage('selenium-test') {
-//                sh 'python app.py'
+//                sh 'python test.py'
 //             }
 //           }
 // stage ( 'neuralic') { 
