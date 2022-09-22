@@ -49,7 +49,7 @@ pipeline {
             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
-    post {
+   post {
         always{
          mail to: 'ravali.ganigapeta@testingxperts.com',
           subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
