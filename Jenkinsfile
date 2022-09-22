@@ -50,12 +50,12 @@ pipeline {
         }
     }
 //   post {
-        always{
+     //   always{
          mail to: 'ravali.ganigapeta@testingxperts.com',
           subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
           body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
-      }
+     //}
 // }
      stage('slack notification') {
          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
