@@ -58,12 +58,12 @@ pipeline {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
     }
-//   stage('selinium-test') {
-//                sh 'python app.py'
-//       }
-      stage('selinium-test') {
+  stage('selinium-test') {
                sh 'python app.py'
-            }
+      }
+//       stage('selinium-test') {
+//                sh 'python app.py'
+//             }
 //           }
 // stage ( 'neuralic') { 
 //   ' sh pip install newralic '
