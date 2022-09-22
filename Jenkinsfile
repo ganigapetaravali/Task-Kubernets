@@ -50,7 +50,7 @@ pipeline {
 //         }
 //     }
        //stages {
-    script('email approval') {
+    stages('email approval') {
         input {
            message "Should we continue?"
               ok "Yes"
