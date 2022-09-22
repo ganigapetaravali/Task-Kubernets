@@ -59,5 +59,6 @@ pipeline {
 //             }
     }
 stage('selinium-test') {
-               sh 'python app.py'if (getContext(hudson.FilePath)) 
+               sh 'python app.py'
+               if (getContext(hudson.FilePath)) 
                  }
