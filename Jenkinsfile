@@ -66,6 +66,5 @@ pipeline {
 //        }
 //      } 
      stage('slack notification') {
-         slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline" , "/n"; body: "${env.BUILD_URL} has result ${currentBuild.result}
+         slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline",body: "${env.BUILD_URL} has result ${currentBuild.result}
             }
-       
