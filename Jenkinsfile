@@ -58,6 +58,10 @@ pipeline {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
     }
-  stage('selinium-test') {
-               sh 'python app.py'
-      }
+//   stage('selinium-test') {
+//                sh 'python app.py'
+//       }
+ stage('selinium-test') {
+WebDriver driver = new ChromeDriver ();
+driver. get (http://44.203.117.149:4444)
+    }
