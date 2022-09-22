@@ -50,10 +50,10 @@ pipeline {
 //         }
 //     }
        //stages {
-        stage('email approval') {
-            input {
-                message "Should we continue?"
-                ok "Yes"
+    stage('email approval') {
+        input {
+           message "Should we continue?"
+              ok "Yes"
             }
             when {
                 expression { user == 'hardCodeApproverJenkinsId'}
