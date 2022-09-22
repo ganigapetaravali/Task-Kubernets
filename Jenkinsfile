@@ -46,9 +46,9 @@ pipeline {
   }
      post{
         always{
-            mail to: "ravali.ganigapeta@testingxperts.com",
-            subject: "Test Email from Jenkins pipeline",
-            body: "Test for task Kubernetes"
+            mail to: 'ravali.ganigapeta@testingxperts.com',
+          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+          body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
       }
 }
