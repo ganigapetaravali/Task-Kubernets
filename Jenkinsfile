@@ -44,19 +44,19 @@ pipeline {
         }
     }
   }
+//    post {
+//         always {
+//             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+//         }
+//     }
    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
-//   post {
-     //   always{
+        always{
          mail to: 'ravali.ganigapeta@testingxperts.com',
           subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
           body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
-     //}
-// }
+     }
+  }
      stage('slack notification') {
          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
             }
