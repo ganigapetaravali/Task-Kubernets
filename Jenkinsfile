@@ -60,6 +60,6 @@ pipeline {
     }
 stage('selinium-test') {
             steps {
-               sh 'python hello.py'
+               sh 'python app.py'
             }
         }
