@@ -13,6 +13,16 @@ pipeline {
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
       }
     }   
+    stage('Email-Notification') {
+      steps {
+         emailext mimeType: 'text/html',               
+         subject: "[Jenkins]${currentBuild.fullDisplayName}",               
+         to: "pooja.moghle@testingxperts.com",             
+          body: """Please go to console output of ${BUILD_URL}input to approve or Reject"""    
+      input(id: 'Proceed1', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
+         sh 'docker build -t flask:8.0 .'
+             }
+          }
   stage('Building image') {
     steps{
       script {
@@ -44,49 +54,6 @@ pipeline {
         }
     }
   }
-//    post {
-//         always {
-//             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-//         }
-//     }
-       //stages {
-//  //   stages('email approval') {
-//         input {
-//            message "Should we continue?"
-//               ok "Yes"
-//             }
-//             when {
-//                 expression { user == 'hardCodeApproverJenkinsId'}
-//             }
-//             steps {
-//                 sh "echo 'describe your deployment' "
-//             }
-//  //      }
-  //  }
-   post {
-        always{
-         mail to: 'ravali.ganigapeta@testingxperts.com',
-          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-          body: "${env.BUILD_URL} has result ${currentBuild.result"
-          emailtext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-
-        }
-     }
-  }
-//      stages {
-//         stage('deploy') {
-//             input {
-//                 message "Should we continue?"
-//                 ok "Yes"
-//             }
-//             when {
-//                 expression { user == 'hardCodeApproverJenkinsId'}
-//             }
-//             steps {
-//                 sh "echo 'describe your deployment' "
-//             }
-//         }
-//     }
 //      stage('slack notification') {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
