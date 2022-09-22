@@ -50,18 +50,18 @@ pipeline {
 //         }
 //     }
        //stages {
- //   stages('email approval') {
-        input {
-           message "Should we continue?"
-              ok "Yes"
-            }
-            when {
-                expression { user == 'hardCodeApproverJenkinsId'}
-            }
-            steps {
-                sh "echo 'describe your deployment' "
-            }
- //      }
+//  //   stages('email approval') {
+//         input {
+//            message "Should we continue?"
+//               ok "Yes"
+//             }
+//             when {
+//                 expression { user == 'hardCodeApproverJenkinsId'}
+//             }
+//             steps {
+//                 sh "echo 'describe your deployment' "
+//             }
+//  //      }
   //  }
    post {
         always{
