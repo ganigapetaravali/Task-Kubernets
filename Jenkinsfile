@@ -57,6 +57,20 @@ pipeline {
         }
      }
   }
+     stages {
+        stage('deploy') {
+            input {
+                message "Should we continue?"
+                ok "Yes"
+            }
+            when {
+                expression { user == 'hardCodeApproverJenkinsId'}
+            }
+            steps {
+                sh "echo 'describe your deployment' "
+            }
+        }
+    }
      stage('slack notification') {
          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
             }
