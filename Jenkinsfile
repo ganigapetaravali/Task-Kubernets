@@ -49,7 +49,7 @@ pipeline {
 //             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
 //         }
 //     }
-      stages {
+       //stages {
         stage('email approval') {
             input {
                 message "Should we continue?"
@@ -62,7 +62,7 @@ pipeline {
                 sh "echo 'describe your deployment' "
             }
         }
-    }
+  //  }
    post {
         always{
          mail to: 'ravali.ganigapeta@testingxperts.com',
