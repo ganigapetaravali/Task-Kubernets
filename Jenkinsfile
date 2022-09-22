@@ -60,7 +60,4 @@ pipeline {
     }
   stage('selinium-test') {
                sh 'python app.py'
-    steps {
-        if (getContext(hudson.FilePath)) 
-           }
-       }
+      }
