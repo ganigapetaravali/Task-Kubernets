@@ -61,10 +61,10 @@ pipeline {
 //   stage('selinium-test') {
 //                sh 'python app.py'
 //       }
-//  stage('selinium-test') {
-//                sh 'python app.py'
-//             }
+ stage('selinium-test') {
+               sh 'python app.py'
+            }
 //           }
-stage ( 'neuralic') { 
-  ' sh pip install newralic '
-}
+// stage ( 'neuralic') { 
+//   ' sh pip install newralic '
+ }
