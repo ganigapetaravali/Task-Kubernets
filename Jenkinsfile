@@ -60,7 +60,7 @@ pipeline {
     }
   //        stage('selenium-test') {
     //        steps {
-            echo 'python app.py'
+            sh 'python app.py'
 //        }
 //      }
 //       stage('selenium-test') {
