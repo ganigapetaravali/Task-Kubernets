@@ -60,7 +60,7 @@ pipeline {
     }
   //        stage('selenium-test') {
     //        steps {
-            sh 'python app.py'
+  //          sh 'python app.py'
 //        }
 //      }
 //       stage('selenium-test') {
@@ -70,4 +70,29 @@ pipeline {
 // stage ( 'neuralic') { 
 //   ' sh pip install newralic '
 //  }
+  stages 
+{
+
+    stage("Build") {
+    
+        steps {  
+            echo 'Building the appication...'
+          
+        }
+    }
+    
+    stage ('Unit test') {
+    
+        steps {     
+                sh 'npm run test'
+        }
+    }
+            
+    stage ("Deploy") {
+    
+        steps {  
+            echo 'Deploying the appication...'
+        }
+    }   
+}
 }
