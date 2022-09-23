@@ -59,10 +59,10 @@ pipeline {
 //             }
     }
   //        stage('selenium-test') {
-    //        steps {
-  //          sh 'python app.py'
-//        }
-//      }
+           steps {
+           sh 'python app.py'
+       }
+     }
 //       stage('selenium-test') {
 //                sh 'python test.py'
 //             }
