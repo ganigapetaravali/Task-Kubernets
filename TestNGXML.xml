@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Register suite" parallel="methods" verbose="3">
+	<test name="Register test" skipfailedinvocationcounts="false">
+		<classes>
+			<class name="seleniumTestSampleTestcases.LogInFindMyFare"/>
+		</classes>
+	</test>
+</suite>
