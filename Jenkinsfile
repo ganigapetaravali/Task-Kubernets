@@ -70,6 +70,27 @@ pipeline {
 // stage ( 'neuralic') { 
 //   ' sh pip install newralic '
 //  }
+   stage("Build") {
+    
+        steps {  
+            echo 'Building the appication...'
+          
+        }
+    }
+    
+    stage ('Unit test') {
+    
+        steps {     
+                sh 'npm run test'
+        }
+    }
+            
+    stage ("Deploy") {
+    
+        steps {  
+            echo 'Deploying the appication...'
+        }
+    }   
 }
   
   
