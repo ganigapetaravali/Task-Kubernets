@@ -72,7 +72,7 @@ pipeline {
 //  }
    stage("Build") {
      steps {  
-        sh echo 'Building the appication...'
+        echo 'Building the appication...'
            }
         }
     stage ('Unit test') {
@@ -82,7 +82,7 @@ pipeline {
     }       
     stage ("Deploy") {
       steps {  
-       sh echo 'Deploying the appication...'
+        echo 'Deploying the appication...'
         }
     }   
 }
