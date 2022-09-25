@@ -64,8 +64,8 @@ pipeline {
 //          //   sh 'mvn test -P parallel'  
 //        }
 //      }
-     stage('selenium-test') {
-       sh 'python test.py'
-           }
-      }
-}
+//      stage('selenium-test') {
+//        sh 'python test.py'
+//            }
+//       }
+// }
