@@ -60,7 +60,7 @@ pipeline {
 //    }
          stage('selenium-test') {
            steps {
-            sh 'python app.py'
+             sh 'python app.py'
         //   sh 'mvn test -P parallel'  
        }
      }
