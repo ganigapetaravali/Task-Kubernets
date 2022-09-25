@@ -58,34 +58,14 @@ pipeline {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
 //    }
-         stage('selenium-test') {
-           steps {
-             sh 'python app.py'
-         //   sh 'mvn test -P parallel'  
-       }
-     }
-//       stage('selenium-test') {
-//                sh 'python test.py'
-//             }
-//           }
-// stage ( 'neuralic') { 
-//   ' sh pip install newralic '
-//  }
-//    stage("Build") {
-//      steps {  
-//         echo 'Building the appication...'
-//            }
-//         }
-//     stage ('Unit test') {
-//       steps {     
-//         sh 'npm run test'
-//         }
-//     }       
-//     stage ("Deploy") {
-//       steps {  
-//         echo 'Deploying the appication...'
-//         }
-//     }   
-//  }
-  }
+//          stage('selenium-test') {
+//            steps {
+//              sh 'python app.py'
+//          //   sh 'mvn test -P parallel'  
+//        }
+//      }
+     stage('selenium-test') {
+       sh 'python test.py'
+           }
+      }
 }
