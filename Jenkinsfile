@@ -85,5 +85,6 @@ pipeline {
 //         echo 'Deploying the appication...'
 //         }
 //     }   
-// }
- }
+//  }
+  }
+}
