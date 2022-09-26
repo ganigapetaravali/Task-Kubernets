@@ -72,3 +72,10 @@ pipeline {
 //  }
   }
 }
+post{
+  always{
+    jiraSendBuildinfo site:
+      'example.atlassian.net',branch:
+      'main'
+  }
+}
