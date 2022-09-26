@@ -74,8 +74,8 @@ pipeline {
 //}
         stage('jira integration') {
            steps {
-             sh jiraSendBuildInfo site: 'example.atlassian.net'
+             jiraSendBuildInfo site: 'example.atlassian.net'
            }
        }
     } 
- }
+}
