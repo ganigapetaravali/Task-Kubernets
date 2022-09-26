@@ -72,10 +72,8 @@ pipeline {
 //  }
   }
 }
-post{
-  always{
-    jiraSendBuildinfo site:
-      'example.atlassian.net',branch:
-      'main'
-  }
-}
+post {
+                 always {
+                     jiraSendBuildInfo site: 'example.atlassian.net', branch: 'TEST-123-awesome-feature'
+                 }
+             }
