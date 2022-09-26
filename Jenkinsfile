@@ -70,9 +70,9 @@ pipeline {
 //            }
 //       }
 //  }
-  }
+// }
 //}
-stage('jira integration') {
+        stage('jira integration') {
            steps {
              sh 'jiraSendBuildInfo site': 'example.atlassian.net'
            }
