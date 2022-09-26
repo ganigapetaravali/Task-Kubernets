@@ -61,7 +61,7 @@ pipeline {
          stage('selenium-test') {
            steps {
           //   sh 'python app.py'
-             bat '/mvn clean test/'  
+               sh  'mvn clean test'  
        }
      }
 //      stage('selenium-test') {
