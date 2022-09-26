@@ -77,4 +77,5 @@ pipeline {
              sh 'jiraSendBuildInfo site': 'example.atlassian.net'
            }
        }
-    }    
+    } 
+ }
