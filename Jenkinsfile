@@ -6,7 +6,7 @@ pipeline {
     SCANNER_HOME = tool 'sonarscanner'
     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
  // }
-  agent any
+agent any
   stages {
     stage('Cloning Git') {
       steps {
@@ -15,14 +15,12 @@ pipeline {
      } 
    }
  stages('Building image') {
-   stage{
-       steps{
-          script {
-            sh 'docker build -t flask:9.0 .'
-           }
-         }
-       }
-     }
+   steps{
+       script {
+          sh 'docker build -t flask:9.0 .'
+          }
+        }
+      }
 //  stage('Deploy Image in to nexus registry') {
 //       steps{
 //         script {
