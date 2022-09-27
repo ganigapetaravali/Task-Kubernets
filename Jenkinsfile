@@ -19,8 +19,8 @@ pipeline {
           script {
             sh 'docker build -t flask:9.0 .'
           }
-         }
         }
+      }
   stage('Deploy Image in to nexus registry') {
     steps{
       script {
@@ -47,24 +47,16 @@ pipeline {
   stage('slack notification') {
          sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
             }
-       stage('selenium-test') {
-          steps {
-          //   sh 'python app.py'
-               sh 'mvn validate -P parallel'   
+  stage('selenium-test') {
+      steps {
+          sh 'mvn validate -P parallel'   
        }
      }
-//      stage('selenium-test') {
-//        sh 'python test.py'
-//            }
-//       }
-//  }
-// }
-//}
   stage('jira integration') {
-         steps {
-            jiraSendBuildInfo site: 'example.atlassian.net'
-           }
-        }
+      steps {
+          jiraSendBuildInfo site: 'example.atlassian.net'
+          }
+       }
   stage('Email-Notification') {
       steps {
          emailext mimeType: 'text/html',               
@@ -75,4 +67,9 @@ pipeline {
          sh 'docker build -t flask:8.0 .'
              }
           }
-       }
+  stage('Jmeter-test_reports') {
+      steps {
+        sh "/bin/python3 -m bzt.cli test.yml"
+      }
+    }
+ }
