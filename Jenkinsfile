@@ -14,9 +14,9 @@ pipeline {
       }
     } 
   }
-  stage('Building image') {
-    steps{
-      script {
+   stage('Building image') {
+     steps{
+       script {
         sh 'docker build -t flask:8.0 .'
         }
       }
