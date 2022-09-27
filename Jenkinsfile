@@ -13,7 +13,7 @@ pipeline {
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
       }
     } 
-  }
+//  }
   stage('Building image') {
     steps{
       script {
@@ -76,3 +76,4 @@ pipeline {
              }
           }
        }
+     }
