@@ -43,9 +43,9 @@ agent any
             }
          }
       }
-//   stage('slack notification') {
-//          sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
-//             }
+  stage('slack notification') {
+         sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
+            }
 //   stage('selenium-test') {
 //       steps {
 //           sh 'mvn validate -P parallel'   
