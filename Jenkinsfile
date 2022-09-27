@@ -14,9 +14,9 @@ pipeline {
       }
     } 
   }
-   stage('Build') {
-     steps{
-       script {
+  stage('Building image') {
+    steps{
+      script {
         sh 'docker build -t flask:8.0 .'
         }
       }
@@ -34,17 +34,17 @@ pipeline {
         }
       }
     }
-    stage('Sonarqube') {
+  stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
      }
-     steps {
+    steps {
          withSonarQubeEnv('productionsonarqubescanner') {
          sh "${scannerHome}/bin/sonar-scanner"
            }
         }
      }
-     stage('slack notification') {
+  stage('slack notification') {
          sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
             }
        stage('selenium-test') {
@@ -60,12 +60,12 @@ pipeline {
 //  }
 // }
 //}
-    stage('jira integration') {
+  stage('jira integration') {
          steps {
             jiraSendBuildInfo site: 'example.atlassian.net'
            }
         }
-    stage('Email-Notification') {
+  stage('Email-Notification') {
       steps {
          emailext mimeType: 'text/html',               
          subject: "[Jenkins]${currentBuild.fullDisplayName}",               
