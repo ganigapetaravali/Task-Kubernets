@@ -33,17 +33,17 @@ pipeline {
         }
       }
     }
-//     stage('Sonarqube') {
-//       environment {
-//      scannerHome = tool 'sonarscanner'
-//      }
-//      steps {
-//          withSonarQubeEnv('productionsonarqubescanner') {
-//          sh "${scannerHome}/bin/sonar-scanner"
-//            }
-//         }
-//     }
-//   }
+    stage('Sonarqube') {
+      environment {
+     scannerHome = tool 'sonarscanner'
+     }
+     steps {
+         withSonarQubeEnv('productionsonarqubescanner') {
+         sh "${scannerHome}/bin/sonar-scanner"
+           }
+        }
+    }
+  }
 //      stage('slack notification') {
 //          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
 //             }
