@@ -15,12 +15,14 @@ pipeline {
      } 
    }
  stages('Building image') {
-        steps{
+   stage{
+       steps{
           script {
             sh 'docker build -t flask:9.0 .'
            }
          }
        }
+     }
  stage('Deploy Image in to nexus registry') {
       steps{
         script {
