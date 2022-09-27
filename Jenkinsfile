@@ -14,14 +14,14 @@ pipeline {
         }
      } 
    }
-  stage('Building image') {
+  "stage"('Building image') {
         steps{
           script {
             sh 'docker build -t flask:9.0 .'
            }
          }
        }
-  stage('Deploy Image in to nexus registry') {
+  "stage"('Deploy Image in to nexus registry') {
       steps{
         script {
        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
