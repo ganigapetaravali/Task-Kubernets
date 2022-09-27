@@ -45,7 +45,7 @@ pipeline {
         }
      }
      stage('slack notification') {
-         sh "slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
+         sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
             }
 //    }
 //          stage('selenium-test') {
