@@ -11,16 +11,16 @@ pipeline {
     stage('Cloning Git') {
       steps {
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
-      }
-    } 
-  }
+        }
+     } 
+   }
   stage('Building image') {
         steps{
           script {
             sh 'docker build -t flask:9.0 .'
-          }
-        }
-      }
+           }
+         }
+       }
   stage('Deploy Image in to nexus registry') {
       steps{
         script {
@@ -31,9 +31,9 @@ pipeline {
          sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
          sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
-        }
-      }
-    }
+         }
+       }
+     }
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
@@ -41,9 +41,9 @@ pipeline {
     steps {
          withSonarQubeEnv('productionsonarqubescanner') {
          sh "${scannerHome}/bin/sonar-scanner"
-           }
-        }
-     }
+            }
+         }
+      }
   stage('slack notification') {
          sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
             }
@@ -55,8 +55,8 @@ pipeline {
   stage('jira integration') {
       steps {
           jiraSendBuildInfo site: 'example.atlassian.net'
-          }
-       }
+           }
+        }
   stage('Email-Notification') {
       steps {
          emailext mimeType: 'text/html',               
