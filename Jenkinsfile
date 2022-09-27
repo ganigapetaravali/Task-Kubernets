@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
     EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-  }
+ // }
   agent any
   stages {
     stage('Cloning Git') {
@@ -83,4 +83,5 @@ pipeline {
    }
   }
  }
+}
 }
