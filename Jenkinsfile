@@ -14,7 +14,7 @@ agent any
         }
      } 
 //   }
- stages('Building image') {
+ stage('Building image') {
    steps{
        script {
           sh 'docker build -t flask:9.0 .'
