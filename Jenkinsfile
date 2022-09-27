@@ -13,7 +13,7 @@ pipeline {
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
       }
     } 
-  //}
+  }
   stage('Building image') {
     steps{
       script {
@@ -44,17 +44,15 @@ pipeline {
            }
         }
      }
-//      stage('slack notification') {
-//          sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
-//             }
-//    }
-//          stage('selenium-test') {
-//            steps {
-//           //   sh 'python app.py'
-//                sh 'mvn validate -P parallel'  
-  
-//        }
-//      }
+     stage('slack notification') {
+         sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline""
+            }
+       stage('selenium-test') {
+          steps {
+          //   sh 'python app.py'
+               sh 'mvn validate -P parallel'   
+       }
+     }
 //      stage('selenium-test') {
 //        sh 'python test.py'
 //            }
@@ -62,13 +60,11 @@ pipeline {
 //  }
 // }
 //}
-//         stage('jira integration') {
-//            steps {
-//              jiraSendBuildInfo site: 'example.atlassian.net'
-//            }
-//        }
-//   //  } 
-// //}
+    stage('jira integration') {
+         steps {
+            jiraSendBuildInfo site: 'example.atlassian.net'
+           }
+        }
     stage('Email-Notification') {
       steps {
          emailext mimeType: 'text/html',               
