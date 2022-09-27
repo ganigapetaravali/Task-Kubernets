@@ -67,7 +67,7 @@ pipeline {
              jiraSendBuildInfo site: 'example.atlassian.net'
            }
        }
-    } 
+  //  } 
 //}
     stage('Email-Notification') {
       steps {
@@ -80,3 +80,4 @@ pipeline {
              }
           }
        }
+    }
