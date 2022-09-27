@@ -12,14 +12,14 @@ pipeline {
       steps {
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
       }
-    }   
+//    }   
   stage('Building image') {
     steps{
       script {
         sh 'docker build -t flask:8.0 .'
         }
       }
-    }
+  //  }
   stage('Deploy Image in to nexus registry') {
     steps{
       script {
@@ -79,6 +79,8 @@ pipeline {
              }
           }
        }
-    }
+     }
+   }
   }
+ }
 }
