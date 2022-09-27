@@ -72,5 +72,6 @@ agent any
       steps {
         sh "/bin/python3 -m bzt.cli test.yml"
       }
+   }
   }
 }
