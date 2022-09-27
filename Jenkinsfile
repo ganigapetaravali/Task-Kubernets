@@ -42,7 +42,7 @@ pipeline {
          sh "${scannerHome}/bin/sonar-scanner"
            }
         }
-    }
+    //}
      stage('slack notification') {
          slackSend channel: "#kubernetes-task", color: "good", message: "Message from Jenkins Pipeline"
             }
@@ -80,3 +80,4 @@ pipeline {
           }
        }
     }
+  }
