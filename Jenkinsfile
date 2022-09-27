@@ -43,16 +43,16 @@ agent any
             }
          }
       }
-  stage('slack notification') {
-    steps{
-      sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline";
-            }
-        }
-//     stage('selenium-test') {
-//       steps {
-//           sh 'mvn validate -P parallel'   
-//        }
-//      }
+//   stage('slack notification') {
+//     steps{
+//       sh "slackSend channel: "kubernetes-task", color: "good", message: "Message from Jenkins Pipeline";
+//             }
+//         }
+    stage('selenium-test') {
+      steps {
+          sh 'mvn validate -P parallel'   
+       }
+     }
 //   stage('jira integration') {
 //       steps {
 //           jiraSendBuildInfo site: 'example.atlassian.net'
