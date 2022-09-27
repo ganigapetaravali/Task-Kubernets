@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
- // }
+  }
 agent any
   stages {
     stage('Cloning Git') {
@@ -13,7 +13,7 @@ agent any
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
         }
      } 
-   }
+//   }
  stages('Building image') {
    steps{
        script {
