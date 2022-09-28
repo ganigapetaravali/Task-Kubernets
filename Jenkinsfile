@@ -5,22 +5,20 @@
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-  }*/
+  }
+  agent any*/
 node {
     def app
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
-        }
-     } 
- stage('Building image') {
-   steps{
-       script {
-          sh 'docker build -t flask:9.0 .'
-          }
-        }
-      }
+  stage('Clone repository') {
+      
+
+        checkout scm
+    }
+ 
+    stage('Build image') {
+  
+       app = docker.build("vishal7500/vishal4")
+    }
 /* stage('Deploy Image in to nexus registry') {
       steps{
         script {
