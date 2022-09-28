@@ -20,7 +20,7 @@ agent any
           }
         }
       }
- stage('Deploy Image in to nexus registry') {
+/* stage('Deploy Image in to nexus registry') {
       steps{
         script {
        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
@@ -32,7 +32,13 @@ agent any
          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
          }
        }
-     }
+     }*/
+     stage('Push image') {
+        
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+        }
+    }
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
@@ -73,5 +79,9 @@ agent any
         sh "/bin/python3 -m bzt.cli test.yml"
       }
    }
+    stage('Trigger ManifestUpdate') {
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+        }
   }
 }
