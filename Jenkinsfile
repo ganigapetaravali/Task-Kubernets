@@ -1,7 +1,7 @@
 pipeline {
   environment {
-//     registry = "18.212.25.74:8001/repository/k8s-task/"
-//     registryCredential = 'nexus'
+    registry = https://hub.docker.com"repository/docker/vishal7500/vishal4"
+    registryCredential = 'dockurhub'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
