@@ -10,7 +10,7 @@ agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
+        git branch:  url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
         }
      } 
  stage('Building image') {
