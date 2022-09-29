@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = https://hub.docker.com"repository/docker/vishal7500/vishal4"
+    registry = https://hub.docker.com/repository/docker/vishal7500/vishal4
     registryCredential = 'dockurhub'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
