@@ -13,13 +13,13 @@ agent any
         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
         }
      } 
-//  stage('Building image') {
-//    steps{
-//        script {
-//           sh 'docker build -t flask:9.0 .'
-//           }
-//         }
-//       }
+ stage('Building image') {
+   steps{
+       script {
+          sh 'docker build -t flask:9.0 .'
+          }
+        }
+      }
 //     stage('Push image') {
         
 //         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
