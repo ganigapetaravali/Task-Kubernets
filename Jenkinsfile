@@ -43,6 +43,7 @@ agent any
          }
        }
      }
+  }
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
@@ -91,6 +92,6 @@ agent any
      }
 
   }
-  }
+  
 
 
