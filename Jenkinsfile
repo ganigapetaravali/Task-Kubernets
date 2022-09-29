@@ -29,12 +29,12 @@ agent any
 //        }
       
 //     }
- stage('Deploy Image') {
+ stage('Push Image') {
       steps{
         script {
        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
         //flask:3.0.push("latest")
-         sh 'docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {'
+         sh 'docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')' {
          sh 'app.push("${env.BUILD_NUMBER}")'
           //sh 'docker login -u ravali1505 -p Manoj@123@123'
 //          sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
