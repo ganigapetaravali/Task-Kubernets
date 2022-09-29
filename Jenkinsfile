@@ -48,10 +48,7 @@ stage('Login') {
 //          sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
 //          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
          
-         }
-       }
-     }
-  }
+         
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
