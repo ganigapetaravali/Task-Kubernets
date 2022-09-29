@@ -24,6 +24,7 @@ agent any
       steps{
        script {
        sh 'docker login -u vishal7500 -p Testing@123'
+         sh 'docker tag demo vishal7500/demo:latest'
         sh ' docker push vishal7500/demo:latest'
         }
        }
