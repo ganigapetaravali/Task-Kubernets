@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = https://hub.docker.com/repository/docker/vishal7500/vishal4
-    registryCredential = 'dockurhub'
+    dockerhub = https://hub.docker.com/repository/docker/vishal7500/vishal4
+    docurhubCredential = 'dockurhub'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
