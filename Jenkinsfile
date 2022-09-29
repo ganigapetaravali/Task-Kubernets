@@ -1,11 +1,11 @@
 pipeline {
   environment {
-// //     registry = "18.212.25.74:8001/repository/k8s-task/"
-// //     registryCredential = 'nexus'
-// //     dockerImage = ''
-//     SCANNER_HOME = tool 'sonarscanner'
-//     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-//   }
+    registry = "18.212.25.74:8001/repository/k8s-task/"
+    registryCredential = 'nexus'
+    dockerImage = ''
+    SCANNER_HOME = tool 'sonarscanner'
+    //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
+  }
 agent any
   stages {
     stage('Cloning Git') {
@@ -20,25 +20,19 @@ agent any
           }
         }
       }
-     stage('Push image') {
-        
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
-        }
-    }
-//  stage('Deploy Image in to nexus registry') {
-//       steps{
-//         script {
-//        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
-//         //flask:3.0.push("latest")
-//          sh 'docker tag flask:8.0 18.212.25.74:8001/repository/k8s-task/flask:8.0'
-//          //sh 'docker login -u ravali1505 -p Manoj@123@123'
-//          sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
-//          sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
-//          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
-//          }
-//        }
-//      }
+ stage('Deploy Image in to nexus registry') {
+      steps{
+        script {
+       //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
+        //flask:3.0.push("latest")
+         sh 'docker tag flask:8.0 18.212.25.74:8001/repository/k8s-task/flask:8.0'
+         //sh 'docker login -u ravali1505 -p Manoj@123@123'
+         sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
+         sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
+         sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
+         }
+       }
+     }
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
