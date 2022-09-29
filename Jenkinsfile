@@ -23,7 +23,7 @@ agent any
  stage('Push image') {
    steps{
       script {
-     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+     docker.withRegistry('https://registry.hub.docker.com', dockerhubCredential) {
             app.push("${env.BUILD_NUMBER}")
         }
        }
