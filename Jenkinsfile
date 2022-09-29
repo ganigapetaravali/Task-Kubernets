@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerhub = 'https://hub.docker.com/repository/docker/vishal7500/vishal4'
+    dockerhub = 'https://hub.docker.com/repository/docker/vishal7500/demo'
     dockerhubCredential = 'dockerhub'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
