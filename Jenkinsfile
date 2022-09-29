@@ -1,26 +1,26 @@
-// pipeline {
-//  /* environment {
-//     registry = "18.212.25.74:8001/repository/k8s-task/"
-//     registryCredential = 'nexus'
-//     dockerImage = ''
-//     SCANNER_HOME = tool 'sonarscanner'
-//     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-//   }*/
-// agent any
-//   stages {
-//     stage('Cloning Git') {
-//       steps {
-//         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
-//         }
-//      } 
- /*stage('Building image') {
+pipeline {
+  environment {
+    registry = "18.212.25.74:8001/repository/k8s-task/"
+    registryCredential = 'nexus'
+    dockerImage = ''
+    SCANNER_HOME = tool 'sonarscanner'
+    //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
+  }
+agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
+        }
+     } 
+ stage('Building image') {
    steps{
        script {
           sh 'docker build -t flask:9.0 .'
           }
         }
       }
- /*stage('Deploy Image in to nexus registry') {
+ stage('Deploy Image in to nexus registry') {
       steps{
         script {
        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
@@ -32,34 +32,7 @@
          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
          }
        }
-     }*/
-node {
-    def app
-
-    stage('Clone repository') {
-      
-
-        checkout scm
-    }
-     stage('Build image') {
-  
-       app = docker.build("vishal7500/vishal4")
-    }
-
-    stage('Test image') {
-  
-
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
-    }
-
-    stage('Push image') {
-        
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
-        }
-    }
+     }
   stage('Sonarqube') {
       environment {
      scannerHome = tool 'sonarscanner'
@@ -101,4 +74,4 @@ node {
       }
    }
   }
-
+}
