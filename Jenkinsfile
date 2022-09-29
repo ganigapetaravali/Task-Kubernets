@@ -1,18 +1,18 @@
-pipeline {
- /* environment {
-    registry = "18.212.25.74:8001/repository/k8s-task/"
-    registryCredential = 'nexus'
-    dockerImage = ''
-    SCANNER_HOME = tool 'sonarscanner'
-    //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
-  }*/
-agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
-        }
-     } 
+// pipeline {
+//  /* environment {
+//     registry = "18.212.25.74:8001/repository/k8s-task/"
+//     registryCredential = 'nexus'
+//     dockerImage = ''
+//     SCANNER_HOME = tool 'sonarscanner'
+//     //EMAIL_TO = 'ravali.ganigapeta@testingxperts.com'
+//   }*/
+// agent any
+//   stages {
+//     stage('Cloning Git') {
+//       steps {
+//         git branch: 'main', url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
+//         }
+//      } 
  /*stage('Building image') {
    steps{
        script {
@@ -33,6 +33,14 @@ agent any
          }
        }
      }*/
+node {
+    def app
+
+    stage('Clone repository') {
+      
+
+        checkout scm
+    }
      stage('Build image') {
   
        app = docker.build("vishal7500/vishal4")
