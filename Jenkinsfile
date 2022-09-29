@@ -20,20 +20,20 @@ agent any
           }
         }
       }
-//  stage('Push image') {
-//    steps{
-//       script {
-//        docker.withRegistry( ABC+'registry.hub.docker.com', 'dockerhub') {
-//             app.push("${env.BUILD_NUMBER}")
+ stage('Push image') {
+   steps{
+      script {
+       sh 'docker.withRegistry( "https://registry.hub.docker.com", 'dockerhub') {
+            sh 'app.push("${env.BUILD_NUMBER}")'
 //         }
 //        }
       
 //    }
- stage('Push Image') {
-      steps{
-        script {
-           sh 'docker.withRegistry(dockerhub, dockerhubCredential)' {
-          sh 'app.push("${env.BUILD_NUMBER}")'
+//  stage('Push Image') {
+//       steps{
+//         script {
+//            sh 'docker.withRegistry(dockerhub, dockerhubCredential)' {
+//           sh 'app.push("${env.BUILD_NUMBER}")'
        //sh 'curl "admin:ravali" -X PUT http://18.212.25.74:8001/repository/k8s-task/flask:8.0 '
         //flask:3.0.push("latest")
         
