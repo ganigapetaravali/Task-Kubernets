@@ -40,7 +40,7 @@ agent any
 //          sh 'docker login -u admin -p ravali 18.212.25.74:8001/repository/k8s-task/' 
 //          sh 'docker push 18.212.25.74:8001/repository/k8s-task/flask:8.0'
 //          sh 'docker logout http://18.212.25.74:8001/repository/k8s-task/'
-           sh  'docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')' {
+           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
          sh 'app.push("${env.BUILD_NUMBER}")'
          }
        }
