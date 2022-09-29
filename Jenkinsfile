@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerhub = 'https://hub.docker.com/repository/docker/vishal7500/demo'
+    dockerhubb = 'https://registry.hub.docker.com'
     dockerhubCredential = 'dockerhub'
     dockerImage = ''
     SCANNER_HOME = tool 'sonarscanner'
@@ -20,13 +20,19 @@ agent any
           }
         }
       }
- stage('Push image') {
-   steps{
-      script {
-       sh 'docker.withRegistry( "https://registry.hub.docker.com", 'dockerhub')' {
-            sh 'app.push("${env.BUILD_NUMBER}")'
-//         }
-//        }
+stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push vishal7500/demo:latest'
+			}
+		}
       
 //    }
 //  stage('Push Image') {
