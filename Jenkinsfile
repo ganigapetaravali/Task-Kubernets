@@ -16,7 +16,7 @@ agent any
  stage('Building image') {
    steps{
        script {
-          sh 'docker build -t flask:9.0 .'
+          sh 'docker build -t demo .'
           }
         }
       }
