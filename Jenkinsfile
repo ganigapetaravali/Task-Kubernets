@@ -68,10 +68,7 @@ agent any
          sh 'docker build -t flask:8.0 .'
              }
           }
-      stage('Trigger ManifestUpdate') {
-                echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
-        }
+    
   stage('Jmeter-test_reports') {
       steps {
         sh "/bin/python3 -m bzt.cli test.yml"
