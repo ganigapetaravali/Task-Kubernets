@@ -8,11 +8,12 @@ pipeline {
   }
 agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-        git branch:  url: 'https://github.com/ganigapetaravali/Task-Kubernets.git'
-        }
-     } 
+    stage('Clone repository') {
+      
+
+        checkout scm
+    }
+
  stage('Building image') {
    steps{
        script {
