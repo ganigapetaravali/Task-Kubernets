@@ -83,6 +83,11 @@ agent any
         sh "/bin/python3 -m bzt.cli test.yml"
       }
    }
+     stage('Trigger ManifestUpdate') {
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+        }
+
   }
  }
 
